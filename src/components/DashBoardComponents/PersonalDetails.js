@@ -18,8 +18,11 @@ export default function PersonalDetails({ dash, handleEditProfile, openModal, pu
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const handleViewResume = () =>{
-    navigate(`/resume/${token}`);
-
+    // navigate(`/resume/${token}`);
+    // Open the new tab/window using window.open
+    const newTab = window.open(`/resume/${token}`, '_blank');
+    // Optionally, you can focus on the new tab/window
+    newTab.focus();
   }
   return (
     <div>
@@ -97,7 +100,7 @@ export default function PersonalDetails({ dash, handleEditProfile, openModal, pu
               <div className="flex gap-1 justify-center items-center">
                 <MdContactPage size={15} />
                 <p className={buttontextstyle}>
-                View Resume
+                Resume
                 </p>
               </div>
             </div>
