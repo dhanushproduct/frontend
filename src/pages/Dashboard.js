@@ -17,6 +17,7 @@ import ExperienceComponent from "../components/DashBoardComponents/ExperienceCom
 import EducationComponent from "../components/DashBoardComponents/EducationComponent";
 import OrderModal from "../components/DashBoardComponents/OrderModal";
 import apiUrl from "../apiConfig";
+import ToggleOptions from "../components/ToggleOptions";
 const Layout = () => {
   const [vieweditprofile, setvieweditprofile] = useState(false);
   const [showeditexperience, setshoweditexperience] = useState(false);
@@ -221,7 +222,12 @@ const Layout = () => {
               ))}
             </div>
           </div>
-          <div className="md:w-[20%] w-[100%] h-full bg-gray-100  rounded-xl"></div>
+          <div className="md:w-[20%] w-[100%] h-full bg-gray-100  rounded-xl">
+            <ToggleOptions
+              publicview = {publicview}
+              setpublicview = {setpublicview}
+              />
+          </div>
         </div>
       </div>
     );

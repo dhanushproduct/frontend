@@ -4,15 +4,22 @@ import { useEffect } from 'react';
 import { Worker } from '@react-pdf-viewer/core';
 import { Viewer } from '@react-pdf-viewer/core';
 import apiUrl from '../apiConfig';
+import { FaEdit} from "react-icons/fa";
+
 import { FaSpinner } from "react-icons/fa";
 
 import axios from 'axios';
 import '@react-pdf-viewer/core/lib/styles/index.css';
+import AddResumeModal from '../components/AddResumeModal';
 
 const ViewResume = () => {
+  const buttontextstyle = "text-xs lg:text-lg md:text-md"
+
   const [pdfUrl, setPdfUrl] = useState('');
   const token = localStorage.getItem("token");
   const [loading,setLoading] = useState(true);
+  const [showaddresumemodal,setShowaddresumemodal] = useState(false);
+
 
   const handleButtonClick = async () => {
     console.log('Clicked')
@@ -35,6 +42,10 @@ const ViewResume = () => {
       // Handle error, show an alert, etc.
     }
   };
+
+  const handleEditResume = () =>{
+      setShowaddresumemodal(!showaddresumemodal);
+  }
 
 //   const handleButtonClick = async () => {
     
@@ -70,6 +81,26 @@ const ViewResume = () => {
           </div>
         )
     }
+        {showaddresumemodal && (
+            <AddResumeModal
+              showaddresumemodal={showaddresumemodal}
+              setShowaddresumemodal={setShowaddresumemodal}
+            />
+          )}
+     <div className='flex justify-end md:px-2 py-2'>
+        <div
+          className="border-2 px-2 py-1 rounded-3xl bg-blue-200 border-blue-200 hover:bg-blue-300 hover:border-blue-300 cursor-pointer bg-opacity-70 border-opacity-70"
+          onClick={handleEditResume}
+        >
+          <div className="flex gap-1 justify-center items-center">
+            <FaEdit size={15} />
+            <p className={buttontextstyle}>
+              Upload New Resume
+            </p>
+          </div>
+        </div>
+      </div>
+    <br />
     <div style={{ paddingLeft: '20px', paddingRight: '20px' }}>
     {pdfUrl && (
       <div style={{ width: '100%', height: '90vh' }}>
