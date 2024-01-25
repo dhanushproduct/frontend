@@ -74,13 +74,13 @@ const ViewResume = () => {
 
   return (
     <div>
-    {/* {
+    {
         loading && (
             <div className='flex justify-center items-center h-full'>
             <FaSpinner className="animate-spin text-blue-800 mr-2" />
           </div>
         )
-    } */}
+    }
         {showaddresumemodal && (
             <AddResumeModal
               showaddresumemodal={showaddresumemodal}
@@ -103,7 +103,7 @@ const ViewResume = () => {
     <br />
     <div style={{ paddingLeft: '20px', paddingRight: '20px' }}>
     {pdfUrl && (
-      <div style={{ width: '100%', height: '50%' }}>
+      <div style={{ width: '100%', height: '90vh' }}>
         <Worker workerUrl={`https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js`}>
           <Viewer fileUrl={pdfUrl} />
         </Worker>
