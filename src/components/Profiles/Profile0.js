@@ -28,7 +28,7 @@ export default function Profile0() {
     signInWithPhoneNumber(auth, phone, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
-        toast.success("OTP sended successfully!");
+        toast.success("OTP sent successfully!");
       })
       .catch((error) => {
         console.log(error);
@@ -67,14 +67,15 @@ export default function Profile0() {
     }
     
     const writtenOtp = otpValues.join("");
-    window.confirmationResult
-      .confirm(writtenOtp)
-      .then(async (res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    verifyOtp();
+    // window.confirmationResult
+    //   .confirm(writtenOtp)
+    //   .then(async (res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   }
 
   
@@ -133,9 +134,7 @@ export default function Profile0() {
     setphone(ph);
     setviewotp(true);
     startTimerResend();
-    onSignup();
-
-    // giving empty at console 
+    // onSignup();
     console.log(phone);
   };
   const handlepaste = (e) => {
